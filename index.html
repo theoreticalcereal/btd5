@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flash Content with swf2js</title>
+    
+    <!-- Step A: Include the swf2js library -->
+    <script type="text/javascript" src="js/swf2js.js"></script>
+</head>
+<body>
+
+    <!-- Step B: Create a container element for your Flash animation -->
+    <div id="flash-container" style="width: 800px; height: 600px;"></div>
+
+    <!-- Step C: Load and display your SWF file -->
+    <script type="text/javascript">
+        swf2js.load('bloons-tower-defense-5.swf', {
+            tagId: 'flash-container' // Must match the ID of your div above
+        });
+    </script>
+
+</body>
+</html>
