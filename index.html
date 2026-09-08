@@ -2,20 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Flash Content with swf2js</title>
-    
-    <!-- Step A: Include the swf2js library -->
-    <script type="text/javascript" src="js/swf2js.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloons TD 5 - Self-Hosted Ruffle</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #player-container {
+            width: 800px;
+            height: 600px;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Step B: Create a container element for your Flash animation -->
-    <div id="flash-container" style="width: 800px; height: 600px;"></div>
+    <div id="player-container"></div>
 
-    <!-- Step C: Load and display your SWF file -->
-    <script type="text/javascript">
-        swf2js.load('bloons-tower-defense-5.swf', {
-            tagId: 'flash-container' // Must match the ID of your div above
+    <!-- Point this directly to your self-hosted ruffle.js file -->
+    <script src="ruffle.js"></script>
+    
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            const ruffle = window.RufflePlayer.newest();
+            const player = ruffle.createPlayer();
+            const container = document.getElementById("player-container");
+            container.appendChild(player);
+            
+            player.load({
+                url: "bloons-tower-defense-5.swf", 
+                allowScriptAccess: true
+            });
         });
     </script>
 
