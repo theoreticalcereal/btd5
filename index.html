@@ -3,35 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bloons TD 5 - 1080p</title>
+    <title>Bloons TD 5 - Self-Hosted Ruffle</title>
     <style>
-        /* Center the 1080p canvas inside the browser window */
-        html, body {
+        body {
             margin: 0;
             padding: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #111111; /* Dark background behind the game canvas */
+            background-color: #000000;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: auto; /* Adds scrollbars if your monitor resolution is under 1080p */
+            height: 100vh;
         }
-        
-        /* Hard lock the container to exactly 1920x1080 pixels */
         #player-container {
-            width: 1920px !important;
-            height: 1080px !important;
-            min-width: 1920px;
-            min-height: 1080px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.7); /* Optional subtle shadow boundary */
-            background-color: #000000;
-        }
-
-        /* Force Ruffle element to conform to the 1080p container */
-        #player-container ruffle-player {
-            width: 100% !important;
-            height: 100% !important;
+            width: 800px;
+            height: 600px;
         }
     </style>
 </head>
@@ -39,31 +24,18 @@
 
     <div id="player-container"></div>
 
-    <script>
-        window.RufflePlayer = window.RufflePlayer || {};
-        window.RufflePlayer.config = {
-            autoplay: "on",
-            unmuteOverlay: "hidden",
-            scale: "exactFit",    // Forces the game canvas to stretch fully to 1920x1080
-            forceScale: true       // Prevents the SWF from resetting itself to 800x600
-        };
-    </script>
-
-    <script src="js/ruffle/ruffle.js"></script>
+    <!-- Point this directly to your self-hosted ruffle.js file -->
+    <script src="ruffle.js"></script>
     
     <script>
         window.addEventListener("DOMContentLoaded", () => {
             const ruffle = window.RufflePlayer.newest();
             const player = ruffle.createPlayer();
             const container = document.getElementById("player-container");
-            
-            player.style.width = "100%";
-            player.style.height = "100%";
-            
             container.appendChild(player);
             
             player.load({
-                url: "btd5.swf", 
+                url: "bloons-tower-defense-5.swf", 
                 allowScriptAccess: true
             });
         });
